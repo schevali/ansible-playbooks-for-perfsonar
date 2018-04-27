@@ -1,0 +1,8 @@
+interfaces:
+  - name: em1
+    ipv4_gateway: 198.111.227.97
+  - name: em2
+    ipv4_gateway: 10.111.249.1
+
+troubleshoot:
+  - host: 10.111.249.17

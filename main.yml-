@@ -1,0 +1,33 @@
+# main perfSONAR config
+
+- name: Get roles
+  hosts: localhost
+  tasks:
+    - name: Get perfSONAR toolkit role
+      command: ansible-galaxy install -f epcjr.perfsonar-toolkit
+
+- name: install perfSONAR Toolkits
+  hosts: all
+  tasks:
+    - include_role:
+        name: epcjr.perfsonar-toolkit
+      vars:
+        users:
+          - epcjr
+        troubleshoot:
+          - perfsonardev0.internet2.edu
+        bastion_hosts:
+          - 141.211.160.28
+        disable_root_ssh: true
+        nameservers:
+          - 8.8.8.8
+          - 8.8.8.4
+        show_password: true
+        web_user: pswebadmin
+        web_passwd: !vault |
+                  $ANSIBLE_VAULT;1.1;AES256
+                  38363164303366643333383964313839303264346566636364363062353565316435613866363364
+                  6534613735326462613735323439366164303131363534640a653634623233376530383966343061
+                  35636232633362383534393835623035643165666436663236643335303966616437313664363336
+                  3666616539626332360a373635323330373339653939623961663136313931333437373964343436
+                  6161

@@ -1,0 +1,14 @@
+# main perfSONAR config
+
+- name: Get roles
+  hosts: localhost
+  tasks:
+    - name: Get perfSONAR toolkit role
+      command: ansible-galaxy install -f epcjr.perfsonar-toolkit
+
+- name: install perfSONAR Toolkits
+  hosts: all
+  vars_files:
+    - vars/toolkit.yml
+  roles:
+    - { role: epcjr.perfsonar-toolkit }
