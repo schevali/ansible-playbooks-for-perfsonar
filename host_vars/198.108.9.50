@@ -1,9 +1,9 @@
 ### list of interfaces and gateways for multi-NIC systems
 # http://docs.perfsonar.net/manage_dual_xface.html
 #
-hostname: perfsonar_dc_macc
+perfsonar_hostname: perfsonar_dc_macc
 
-interfaces:
+perfsonar_interfaces:
   - name: em1
     ipv4_gateway: 198.108.9.49
   - name: p1p2

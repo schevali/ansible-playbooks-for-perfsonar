@@ -5,10 +5,21 @@
   tasks:
     - name: Get perfSONAR toolkit role
       command: ansible-galaxy install -f epcjr.perfsonar-toolkit
+    - name: Get perfSONAR testpoint role
+      command: ansible-galaxy install -f epcjr.perfsonar-testpoint
+    - name: Get perfSONAR base role
+      command: ansible-galaxy install -f epcjr.perfsonar
 
-- name: install perfSONAR Toolkits
+- name: install perfSONAR toolkits
   hosts: all
   vars_files:
-    - vars/toolkit.yml
+    - vars/perfsonar-toolkit.yml
   roles:
     - { role: epcjr.perfsonar-toolkit }
+
+#- name: install perfSONAR Toolkits
+#  hosts: all
+#  vars_files:
+#    - vars/perfsonar-toolkit.yml
+#  roles:
+#    - { role: epcjr.perfsonar-toolkit }
